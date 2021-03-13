@@ -1,0 +1,209 @@
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.main {
+    height: 900px;
+    background-image: url(./img/HWpc8Nc6QGATA9WLKaRBWR.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+
+.container-column {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: column wrap;
+    
+}
+
+.container-row {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-flow: row;
+    width: 100%;
+}
+
+.main-h1 {
+    font-size: 60px;
+    background-color: rgb(98, 106, 118, 0.5);
+    padding: 5px 30px;
+}
+
+.button {
+    width: 100px;
+    height: 50px;
+    margin: 40px;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 30px;
+    background-color: ghostwhite;
+}
+
+.starting-gif {
+    position: absolute;
+    top: 35%;
+    left: 15%;
+}
+
+.ship-img {
+    position: absolute;
+    max-width: 150px;
+    
+}
+
+.ship-img.alien {
+    max-width: 100px;
+}
+
+#hero-ship-img {
+    top: 35%;
+    transform: rotate(90deg);
+    
+}
+
+#hero-ship-img.battle-position {
+    top: 35%;
+    left: 35%;
+}
+
+#hero-ship-img.left {
+    left: 10%;
+}
+
+.pop-up-modal {
+    height: 400px;
+    width: 600px;
+    background-color: gray;
+    position: absolute;
+    top: 15%;
+}
+
+.pop-up-modal.hidden {
+    display: none;
+}
+
+.pop-up-modal.open {
+    display: block;
+}
+
+#close-modal-button {
+    display: inline;
+    float: left;
+    margin: 5px;
+}
+
+.pop-up-modal.run {
+    
+    
+}
+
+#modal-h2 {
+    margin: 40px;
+    font-size: 40px;
+}
+
+#modal-p {
+    margin: 40px;
+    font-size: 20px;
+}
+
+.game-text {
+    font-size: 20px;
+    background-color: rgb(98, 106, 118, 0.7);
+    padding: 5px 20px;
+    position: absolute;
+    top: 28%;
+    z-index: 1;
+}
+
+.main-buttons.hide {
+    display: none;
+}
+
+.next-button.hidden {
+    display: none;
+}
+
+.alien1 {
+    transform: rotate(270deg);
+    top: 7%;
+    right: 14%;
+}
+
+.alien2 {
+    transform: rotate(270deg);
+    top: 23%;
+    right: 14%;
+}
+
+.alien3 {
+    transform: rotate(270deg);
+    top: 35%;
+    right: 13%;
+}
+
+.alien4 {
+    transform: rotate(270deg);
+    top: 50%;
+    right: 13%;
+}
+
+.alien5 {
+    transform: rotate(270deg);
+    top: 61%;
+    right: 13%;
+}
+
+.alien6 {
+    transform: rotate(270deg);
+    top: 83%;
+    right: 13%;
+}
+
+.battle-position {
+   top: 42%;
+   left: 60%;
+}
+
+
+
+.red-X-one {
+    top: 4%;
+    right: 11%;
+}
+
+.red-X-two {
+    top: 20%;
+    right: 11%;
+}
+
+.red-X-three {
+    top: 35%;
+    right: 11%;
+}
+
+.red-X-four {
+    top: 49%;
+    right: 11%;
+}
+
+.red-X-five {
+    top: 65%;
+    right: 11%;
+}
+
+.red-X-six {
+    top: 81%;
+    right: 11%;
+}
+
+.hidden {
+    display: none;
+}

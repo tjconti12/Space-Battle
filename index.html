@@ -4,10 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="app.js"></script>
+    <title>Space Battle</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="app.js"></script>
 </head>
 <body>
-    
+    <header class="header">
+
+    </header>
+    <div class="main container-column">
+        <h1 class="main-h1">Battle Game</h1>
+        <p class="game-text"></p>
+        <img class="starting-gif" src="./img/finalHeroShipShooting" alt="shooting ship gif">
+        <div class="game-buttons container-row">
+            <button id="start-game-button" class="button main-buttons">Start</button>
+            <button id="reset-game-button" class="button main-buttons">Reset</button>
+            <button id="next-button" class="button next-button hidden">Next</button>
+            <button id="attack-button" class="button attack-button hidden">Attack</button>
+        </div>
+        <div class="space-ship-imgs">
+            <img class ="ship-img left hidden" id="hero-ship-img" src="./img/heroShipNew.png" alt="hero ship">
+
+            <img class="ship-img alien alien1 hidden" id="alien-ship1-img" src="./img/newAlienShip1.png" alt="alien ship">
+            <img class="ship-img red-X-one hidden" src="./img/redXimg.png" alt="red X">
+        
+            <img class="ship-img alien alien2 hidden" id="alien-ship2-img" src="./img/newAlienShip2.png" alt="alien ship">
+            <img class="ship-img red-X-two hidden" src="./img/redXimg.png" alt="red X">
+        
+            <img class="ship-img alien alien3 hidden" id="alien-ship3-img" src="./img/newAlienShip3.png" alt="alien ship">
+            <img class="ship-img red-X-three hidden" src="./img/redXimg.png" alt="red X">
+        
+            <img class="ship-img alien alien4 hidden" id="alien-ship4-img" src="./img/newAlienShip4.png" alt="alien ship">
+            <img class="ship-img red-X-four hidden" src="./img/redXimg.png" alt="red X">
+        
+            <img class="ship-img alien alien5 hidden" id="alien-ship5-img" src="./img/newAlienShip5.png" alt="alien ship">
+            <img class="ship-img red-X-five hidden" src="./img/redXimg.png" alt="red X">
+        
+            <img class="ship-img alien alien6 hidden" id="alien-ship6-img" src="./img/newAlienShip6.png" alt="alien ship">
+            <img class="ship-img red-X-six hidden" src="./img/redXimg.png" alt="red X">
+            
+        </div>
+        <div class="pop-up-modal hidden">
+            <button id=close-modal-button>X</button>
+            <h2 id="modal-h2">Flying Through Space</h2>
+            <p id="modal-p">You are the Captain of the USS Erica! While flying through space, you are confronted by aliens! Will you fight?? Or run away??</p>
+            <button class="button" id="fight-button">FIGHT</button>
+            <button class="button" id="run-button">RUN</button>
+        </div>
+    </div>
 </body>
 </html>
