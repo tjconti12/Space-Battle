@@ -6,7 +6,7 @@ body {
 }
 
 .main {
-    height: 900px;
+    height: 1000px;
     background-image: url(./img/HWpc8Nc6QGATA9WLKaRBWR.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -15,12 +15,32 @@ body {
     padding: 5px;
 }
 
+.health-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.health-display {
+    width: 140px;
+    height: 60px;
+    margin: 5px;
+}
+
+.name {
+    margin: 1px;
+}
+
+.health-bar {
+    width: 100px;
+}
+
 .container-column {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-flow: column wrap;
-    
+    flex-flow: column;
+    height: 600px;
 }
 
 .container-row {
@@ -37,6 +57,10 @@ body {
     padding: 5px 30px;
 }
 
+.battle-area {
+    height: 200px;
+}
+
 .button {
     width: 100px;
     height: 50px;
@@ -47,16 +71,14 @@ body {
 }
 
 .starting-gif {
-    position: absolute;
-    top: 35%;
-    left: 15%;
+    margin-left: 50px;
 }
 
 .ship-img {
-    position: absolute;
     max-width: 150px;
-    
+    position: absolute;
 }
+
 
 .ship-img.alien {
     max-width: 100px;
@@ -65,16 +87,28 @@ body {
 #hero-ship-img {
     top: 35%;
     transform: rotate(90deg);
-    
+    position: absolute;
 }
 
 #hero-ship-img.battle-position {
-    top: 35%;
+    top: 38%;
     left: 35%;
 }
 
 #hero-ship-img.left {
     left: 10%;
+}
+
+.hero-laser {
+    position: absolute;
+    top: 37%;
+    left: 43%;
+}
+
+.alien-laser {
+    position: absolute;
+    top: 37%;
+    left: 46%;
 }
 
 .pop-up-modal {
@@ -99,10 +133,6 @@ body {
     margin: 5px;
 }
 
-.pop-up-modal.run {
-    
-    
-}
 
 #modal-h2 {
     margin: 40px;
@@ -115,12 +145,12 @@ body {
 }
 
 .game-text {
-    font-size: 20px;
+    font-size: 30px;
     background-color: rgb(98, 106, 118, 0.7);
     padding: 5px 20px;
-    position: absolute;
     top: 28%;
     z-index: 1;
+    min-height: 45px;
 }
 
 .main-buttons.hide {
@@ -168,7 +198,7 @@ body {
 }
 
 .battle-position {
-   top: 42%;
+   top: 43%;
    left: 60%;
 }
 
@@ -206,4 +236,8 @@ body {
 
 .hidden {
     display: none;
+}
+
+.invisible {
+    visibility: hidden;
 }

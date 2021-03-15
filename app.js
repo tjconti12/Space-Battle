@@ -26,6 +26,19 @@ const redXThree = document.querySelector('.red-X-three');
 const redXFour = document.querySelector('.red-X-four');
 const redXFive = document.querySelector('.red-X-five');
 const redXSix = document.querySelector('.red-X-six');
+const heroHealthCounter = document.querySelector('#hero-health-number');
+const alienHealthCounter = document.querySelector('#alien-health-number');
+const healthContainer = document.querySelector('.health-container');
+const healthBarHero = document.querySelector('#health-bar-hero');
+const healthBarAlien = document.querySelector('#health-bar-alien');
+const battlArea = document.querySelector('.battle-area');
+const runFromBattleButton = document.querySelector('#run-from-battle');
+const heroLaser = document.querySelector('.hero-laser');
+const alienLaser = document.querySelector('.alien-laser');
+
+
+
+
 
 let gameString = '';
 
@@ -42,21 +55,28 @@ const heroShip = {
     name: 'Erica',
     hull: 20,
     firepower: 5,
-    accuracy: 1, // CHANGE BACK!!!!!
+    accuracy: 0.7, 
     attack(enemy) {
         if(Math.random() < this.accuracy) {
             enemy.hull -= this.firepower;
+            heroLaser.src = './img/heroAttackLaser';
+            showElement(heroLaser);
             if (enemy.hull < 0) {
                 enemy.hull = 0;
             } 
-            gameString = `${this.name} is attacking ${enemy.name}! ${enemy.name}'s hull is now: ${enemy.hull}!`;
+            gameString = `${this.name} hit ${enemy.name}!`;
             gameText.innerText = gameString;
         } else {
-            gameString = `${this.name} is attacking ${enemy.name}! ${this.name}'s attack missed! ${enemy.name}'s hull is still: ${enemy.hull}!`;
+            gameString = `${this.name} attack missed!`;
             gameText.innerText = gameString;
         }
+        alienHealthCounter.innerText = enemy.hull;
+        healthBarAlien.value = enemy.hull;
     }
 }
+// healthBarHero.value = heroShip.hull;
+// heroHealthCounter.innerText = heroShip.hull;
+
 // Make Alien ship class
 // randomize hull between 3 & 6
     // randomize firepower between 2 & 4
@@ -64,32 +84,41 @@ const heroShip = {
 class Alien {
     constructor(name) {
         this.name = name;
-        this.hull = Math.floor(Math.random() * 4);   // DONT FORGET TO ADDDD!!!!!!!! + 3;
-        this.firepower = Math.floor(Math.random() * 3) + 2;
-        this.accuracy = 1    // DONT FORGET TO FIXXXXX!!!!(Math.floor((Math.random () * 3) + 6) * 0.1).toFixed(1);
+        this.maxHull = Math.floor(Math.random() * 4) + 3;
+        this.hull = this.maxHull;
+        this.firepower = 1 // Math.floor(Math.random() * 3) + 2;
+        this.accuracy = (Math.floor((Math.random () * 3) + 6) * 0.1).toFixed(1);
         // Used toFixed method because it was returning a long decimal. Found documentation at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
     }
     attack() {
         if(Math.random() < this.accuracy) {
             heroShip.hull -= this.firepower 
-            if (heroShip.hull < 0) {
+            heroHealthCounter.innerText = heroShip.hull;
+            healthBarHero.value = heroShip.hull;
+            alienLaser.src = './img/alienLaser';
+            showElement(alienLaser);
+            if (heroShip.hull <= 0) {
                 heroShip.hull = 0;
+                aliensWin();
+            } else {
+                gameString = `${this.name} hit ${heroShip.name}!`;
             }
-            alert(`${this.name} is attacking ${heroShip.name}! ${heroShip.name}'s hull is now: ${heroShip.hull}!`);
         } else {
-            alert(`${this.name} is attacking ${heroShip.name}! ${this.name}'s attack missed! ${heroShip.name}'s hull is still: ${heroShip.hull}!`);
-        }
+            gameString = `${this.name}'s attack missed!`;
+        } 
+        gameText.innerText = gameString;
+        
     }
 }
 
 // Create 6 instances of Alien ship
     // Made only one for now
-let alienShip1 = new Alien ('ship1');
-let alienShip2 = new Alien ('ship2');
-let alienShip3 = new Alien ('ship3');
-let alienShip4 = new Alien ('ship4');
-let alienShip5 = new Alien ('ship5');
-let alienShip6 = new Alien ('ship6');
+let alienShip1 = new Alien ('Alien Trainee');
+let alienShip2 = new Alien ('Alien Drone');
+let alienShip3 = new Alien ('Alien Bomber');
+let alienShip4 = new Alien ('Alien Fighter');
+let alienShip5 = new Alien ('Alien Commander');
+let alienShip6 = new Alien ('Alien Boss');
 
 
 const resetAliens = () => {
@@ -99,9 +128,15 @@ const resetAliens = () => {
     alienShip4 = new Alien ('ship4');
     alienShip5 = new Alien ('ship5');
     alienShip6 = new Alien ('ship6');
+    removeBattlePosition(alien1Img);
+    removeBattlePosition(alien2Img);
+    removeBattlePosition(alien3Img);
+    removeBattlePosition(alien4Img);
+    removeBattlePosition(alien5Img);
+    removeBattlePosition(alien6Img);
 };
 
-const alienShip = [alienShip1, alienShip2, alienShip3, alienShip4, alienShip5, alienShip6];
+let alienShip = [alienShip1, alienShip2, alienShip3, alienShip4, alienShip5, alienShip6];
 
 // DOM related functions
 // Add open class to modal
@@ -112,6 +147,7 @@ const closeModal = () => {
     modalP.innerText = defaultModalTextP;
     fightButton.style.display = 'inline';
     runButton.style.display = 'inline';
+    hideElement(modal);
 }
 
 const hideElement = (element) => {
@@ -122,17 +158,42 @@ const showElement = (element) => {
     element.classList.remove('hidden');
 }
 
+const removeBattlePosition = (alien) => {
+    alien.classList.remove('battle-position');
+}
+
 const modalRunAway = () => {
     modalH2.innerText = 'You lose!';
     modalP.innerText = 'The aliens have invaded Earth, good job you coward!';
     fightButton.style.display = 'none';
     runButton.style.display = 'none';
-    modal.classList.add('run');
 }
 
 const startFightText = () => {
     let currentText = `${alienShip.length} Alien Ships Have Approached!`;
     gameText.innerText = currentText;
+}
+
+const resetGame = () => {
+    resetAliens();
+    alienShipIndex = 0;
+    heroShip.hull = 20;
+    hideAliens();
+    closeModal();
+    showElement(startingGif);
+    showElement(startButton);
+    hideElement(battlArea);
+    hideElement(heroImg);
+    hideElement(nextButton);
+    gameText.innerText = defaultModalTextP;
+    gameText.classList.add('invisible');
+    functionIndex = 0;
+    battleIndex = 0;
+    alienImgIndex = 0;
+    redXIndex = 0;
+    hideElement(attackButton);
+    hideElement(healthContainer);
+    redXArr.forEach(element => hideElement(element));
 }
 
 // I kept a separate function for showing and hiding aliens so I didnt have to pass so many parameters into the show and hide functions
@@ -155,37 +216,59 @@ const hideAliens = () => {
 }
 
 
+// [showAliens, startBattle, moveShipToBattle, (startAttack), checkForEnemyAlive, startBattle, moveShipToBattle, checkForEnemyAlive, startBattle, moveShipToBattle, checkForEnemyAlive, startBattle, moveShipToBattle, checkForEnemyAlive, startBattle, moveShipToBattle, checkForEnemyAlive, startBattle, moveShipToBattle, checkForEnemyAlive, heroWins];
 
 
 // Game logic for only one enemy ship
 
-// Did not need anymore for current edition of game
-// const startGame = () => {
-//     if (battleIndex === alienShip.length) {
-//         let winningText = 'Game over! You win!';
-//         gameText.innerText = winningText;
-//     } else {
-//          heroShip.attack(alienShip[battleIndex]);
-//     }
-//     // alienShipIndex++;
-// }
+const startBattle = () => {
+    let currentText = `${alienShip[battleIndex].name} has approached you for battle!`
+    gameText.innerText = currentText;
+    alienHealthCounter.innerText = alienShip[battleIndex].hull;
+    healthBarAlien.max = alienShip[battleIndex].maxHull;
+    healthBarAlien.value = alienShip[battleIndex].hull;
+    healthContainer.classList.remove('invisible');
+
+}
+
+const moveShipToBattle = () => {
+    gameString = `Should You Run Or Attack?`
+    gameText.innerText = gameString;
+    alienImgArr[alienImgIndex].classList.add('battle-position');
+    heroImg.classList.add('battle-position');
+    heroImg.classList.remove('left');
+    showElement(attackButton);
+    hideElement(nextButton);
+    hideElement(resetButton);
+    showElement(runFromBattleButton);
+}
+
+const startAttack = () => {    
+    heroShip.attack(alienShip[battleIndex]);
+    hideElement(runFromBattleButton);
+}
 
 const heroWins = () => {
     gameString = 'Game over! You win!';
     gameText.innerText = gameString;
+    showElement(resetButton);
+    hideElement(nextButton);
 }
 
+const aliensWin = () => {
+    gameString = 'Game Over!';
+    gameText.innerText = gameString;
+    hideElement(nextButton);
+}
 
 const checkForEnemyAlive = () => {
     if (alienShip[battleIndex].hull > 0) {
-        gameString = `${alienShip[battleIndex].name} is still alive!`
-        gameText.innerText = gameString;
-        // enemy.attack(heroShip);
-        // if (heroShip.hull > 0) {
-        //     // battleNow(enemy);
-        // } else {
-        //     alert('Enemy Wins');
-        // }
+        if (heroShip.hull === 0) {
+            gameText.innerText = 'Game Over!';
+        } else {
+            functionIndex -= 2;
+            alienShip[battleIndex].attack(heroShip);
+        } 
     } else {
         gameString = 'Hero Wins!';
         gameText.innerText = gameString;
@@ -209,20 +292,7 @@ const checkForEnemyAlive = () => {
 
 
 
-const startBattle = () => {
-    let currentText = `${alienShip[battleIndex].name} has approached you for battle!`
-    gameText.innerText = currentText;
-}
 
-const moveShipToBattle = () => {
-    gameText.innerText = '';
-    alienImgArr[alienImgIndex].classList.add('battle-position');
-    console.log(alienImgArr[alienImgIndex]);
-    heroImg.classList.add('battle-position');
-    heroImg.classList.remove('left');
-    showElement(attackButton);
-    hideElement(nextButton);
-}
 
 
 // Starting the game via a button
@@ -233,41 +303,48 @@ startButton.addEventListener('click', () => {
     showElement(modal);
     hideElement(startButton);
     hideElement(startingGif);
+    showElement(battlArea);
 });
 
 closeModalButton.addEventListener('click', () => {
-    hideElement(modal);
+    closeModal();
     showElement(startingGif);
     showElement(startButton);
+    hideElement(battlArea);
 });
 
 fightButton.addEventListener('click', () => {
     hideElement(modal);
     showElement(heroImg);
+    gameText.classList.remove('invisible');
     startFightText();
     showElement(nextButton);
 });
 
 runButton.addEventListener('click', modalRunAway);
 
-resetButton.addEventListener('click', () => {
-    resetAliens();
-    alienShipIndex = 0;
-    heroShip.hull = 10;
-    heroImg.classList.remove('left');
-    heroImg.classList.add('center');
-    gameText.innerText = '';
-    showMainButtons();
-    hideAliens();
-    hideNextButton();
+runFromBattleButton.addEventListener('click', () => {
+    resetGame();
+    modalRunAway();
+    showElement(modal);
+    hideElement(startButton);
+    hideElement(startingGif);
+    showElement(battlArea);
+    hideElement(runFromBattleButton);
+    showElement(resetButton);
 })
+
+resetButton.addEventListener('click', () => {
+    resetGame();
+})
+
 
 nextButton.addEventListener('click', () => {
     selectNextFunction();
 })
 
 attackButton.addEventListener('click', () => {
-    startGame();
+    startAttack();
     hideElement(attackButton);
     showElement(nextButton);
 })
