@@ -35,6 +35,7 @@ const battlArea = document.querySelector('.battle-area');
 const runFromBattleButton = document.querySelector('#run-from-battle');
 const heroLaser = document.querySelector('.hero-laser');
 const alienLaser = document.querySelector('.alien-laser');
+const gameTitle = document.querySelector('.main-h1');
 
 
 
@@ -84,7 +85,7 @@ const heroShip = {
 class Alien {
     constructor(name) {
         this.name = name;
-        this.maxHull = Math.floor(Math.random() * 4) + 3;
+        this.maxHull = Math.floor(Math.random() * 4) + 5; // I gave plus 5 instead of 3 to make it more interesting
         this.hull = this.maxHull;
         this.firepower = 1 // Math.floor(Math.random() * 3) + 2;
         this.accuracy = (Math.floor((Math.random () * 3) + 6) * 0.1).toFixed(1);
@@ -319,6 +320,7 @@ fightButton.addEventListener('click', () => {
     gameText.classList.remove('invisible');
     startFightText();
     showElement(nextButton);
+    hideElement(gameTitle);
 });
 
 runButton.addEventListener('click', modalRunAway);
