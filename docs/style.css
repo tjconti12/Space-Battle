@@ -1,0 +1,373 @@
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.main {
+    height: 100vh;
+    background-image: url(./img/HWpc8Nc6QGATA9WLKaRBWR.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+
+.health-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.health-display {
+    width: 140px;
+    height: 60px;
+    margin: 5px;
+}
+
+.name {
+    margin: 1px;
+}
+
+.health-bar {
+    width: 100px;
+}
+
+.container-column {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: column;
+    height: 70%;
+}
+
+.container-row {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-flow: row;
+    width: 100%;
+}
+
+.main-h1 {
+    font-size: 60px;
+    background-color: rgb(98, 106, 118, 0.5);
+    padding: 5px 30px;
+}
+
+.battle-area {
+    height: 200px;
+}
+
+.button {
+    width: 100px;
+    height: 50px;
+    margin: 40px;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 30px;
+    background-color: ghostwhite;
+}
+
+.starting-gif {
+    margin-left: 50px;
+}
+
+.ship-img {
+    max-width: 150px;
+    position: absolute;
+}
+
+
+.ship-img.alien {
+    max-width: 100px;
+}
+
+#hero-ship-img {
+    top: 30%;
+    transform: rotate(90deg);
+    position: absolute;
+}
+
+#hero-ship-img.battle-position {
+    top: 30%;
+    left: 33%;
+}
+
+#hero-ship-img.left {
+    left: 10%;
+}
+
+.hero-laser {
+    position: absolute;
+    top: 29%;
+    left: 43%;
+}
+
+.alien-laser {
+    position: absolute;
+    top: 29%;
+    left: 44%;
+}
+
+.pop-up-modal {
+    height: 400px;
+    width: 600px;
+    background-color: gray;
+    position: absolute;
+    top: 15%;
+}
+
+.pop-up-modal.hidden {
+    display: none;
+}
+
+.pop-up-modal.open {
+    display: block;
+}
+
+#close-modal-button {
+    display: inline;
+    float: left;
+    margin: 5px;
+}
+
+
+#modal-h2 {
+    margin: 40px;
+    font-size: 40px;
+}
+
+#modal-p {
+    margin: 40px;
+    font-size: 20px;
+}
+
+.game-text {
+    font-size: 30px;
+    background-color: rgb(98, 106, 118, 0.7);
+    padding: 5px 20px;
+    top: 28%;
+    z-index: 1;
+    min-height: 45px;
+}
+
+.main-buttons.hide {
+    display: none;
+}
+
+.next-button.hidden {
+    display: none;
+}
+
+.alien1 {
+    transform: rotate(270deg);
+    top: 7%;
+    right: 14%;
+}
+
+.alien2 {
+    transform: rotate(270deg);
+    top: 23%;
+    right: 14%;
+}
+
+.alien3 {
+    transform: rotate(270deg);
+    top: 35%;
+    right: 13%;
+}
+
+.alien4 {
+    transform: rotate(270deg);
+    top: 50%;
+    right: 13%;
+}
+
+.alien5 {
+    transform: rotate(270deg);
+    top: 61%;
+    right: 13%;
+}
+
+.alien6 {
+    transform: rotate(270deg);
+    top: 83%;
+    right: 13%;
+}
+
+.battle-position {
+   top: 35%;
+   left: 60%;
+}
+
+.red-X-one {
+    top: 4%;
+    right: 11%;
+}
+
+.red-X-two {
+    top: 20%;
+    right: 11%;
+}
+
+.red-X-three {
+    top: 35%;
+    right: 11%;
+}
+
+.red-X-four {
+    top: 49%;
+    right: 11%;
+}
+
+.red-X-five {
+    top: 65%;
+    right: 11%;
+}
+
+.red-X-six {
+    top: 81%;
+    right: 11%;
+}
+
+.hidden {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+/* battle position corrections */
+
+.alien3.battle-position {
+    top: 33%;
+    left: 60%;
+}
+
+.alien4.battle-position {
+    top: 33%;
+   left: 61%;
+}
+
+.alien5.battle-position {
+    top: 30%;
+    left: 60%;
+}
+
+.alien6.battle-position {
+    top: 33%;
+    left: 60%;
+}
+
+@media screen and (max-width: 1024px) {
+    .main-h1 {
+        font-size: 40px;
+    }
+
+    .ship-img {
+        max-width: 120px;
+    }
+
+    .ship-img.alien {
+        max-width: 75px;
+    }
+    
+    .starting-gif {
+        max-width: 450px;
+    }
+
+    .button {
+        height: 40px;
+        width: 70px;
+        font-size: 20px;
+    }
+
+    .game-text {
+        font-size: 25px;
+        max-width: 50vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .main-h1 {
+        font-size: 30px;
+    }
+
+    .ship-img {
+        max-width: 80px;
+    }
+
+    .ship-img.alien {
+        max-width: 45px;
+    }
+    
+    .starting-gif {
+        max-width: 400px;
+    }
+
+    .button {
+        height: 30px;
+        width: 50px;
+        font-size: 10px;
+    }
+
+    .game-text {
+        font-size: 15px;
+        max-width: 40vw;
+    }
+
+    .pop-up-modal {
+        height: 300px;
+        width: 400px;
+        background-color: gray;
+        position: absolute;
+        top: 15%;
+    }
+
+    #modal-h2 {
+        margin: 40px;
+        font-size: 20px;
+    }
+    
+    #modal-p {
+        margin: 40px;
+        font-size: 10px;
+    }
+
+    #hero-ship-img.battle-position {
+        top: 30%;
+        left: 20%;
+    }
+
+    .battle-position {
+        top: 35%;
+        left: 60%;
+     }
+
+    .hero-laser {
+        width: 38%;
+        top: 29%;
+        left: 35%;
+    }
+
+    .alien-laser {
+        width: 38%;
+        top: 30%;
+        left: 34%;
+    }
+    
+    .health-display .name {
+        font-size: 10px;
+    }
+
+    .health-display .health-number {
+        font-size: 10px;
+    }
+
+    .health-display .health-bar {
+        width: 70px;
+    }
+}
