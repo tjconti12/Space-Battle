@@ -1,11 +1,25 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly)
+# Space Battle
+Click Based Browser Game using DOM manipulation and gifs for animation.
 
-#  W02D05 Homework
+## Motivation
+This project was one of the first DOM manipulation projects that I worked on. I wanted to make a game visually pleasing. Since I was new to javascript and DOM manipulation, all the animations were created in photoshop as Gifs. 
 
-## Tasks
+## Build Status
+The game is fully functional in the Web Browser. Also, the game has been optimized for mobile as well. The game is able to randomize the health, hitpoints, and accuracy of each of the enemy alien ships.
 
-1) **Fork and clone** this repository into your `W02D05` directory
+## Tech/framework used
+Javascript with DOM manipulation, html, and css. Photoshop was used to create the Gifs used for the main page and the laser animation.
 
-2) **Do:** [Space Battle](space-battle.md)
+## Features
+The game features a hero ship, and 5 enemy alien ship. The player always gets to go first. The player has the option to attack or run away. If the player runs away, the game is over. After the player attacks, the enemy has a chance to attack if they are still alive. One the enemy runs out of health, the next enemy will move into its place. The game continues until either the player defeats all of the enemy ships, or the player is defeated by the aliens.
 
-3) **Submit:** via the [Homework Submissions Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdX0ZLUuiAgusabQ0aydqvVIsbYnLkoRZyH8Wm4uDXNEv-tEA/viewform?usp=sf_link). Follow the instructions found in the [How to Submit Homework](https://git.generalassemb.ly/SEIR-Erica/class-info/wiki/How-to-Submit-Homework) page on the wiki.
+## Installation
+There are no dependencies for this game. All of the assets including the ships, animations, and red X's are in the img folder.
+
+## Credits
+- General Assembly for the Idea
+
+## License
+&copy; tjconti12
+
+
