@@ -1,5 +1,6 @@
 # Space Battle
 Click Based Browser Game using DOM manipulation and gifs for animation.
+Live link here https://tjconti12.github.io/Space-Battle/
 
 ## Motivation
 This project was one of the first DOM manipulation projects that I worked on. I wanted to make a game visually pleasing. Since I was new to javascript and DOM manipulation, all the animations were created in photoshop as Gifs. 
